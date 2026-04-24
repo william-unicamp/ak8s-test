@@ -1,2 +1,2 @@
 FROM httpd
-RUN date > /var/www/html/index.html
+RUN date > /usr/local/apache2/htdocs/index.html
