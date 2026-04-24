@@ -1,2 +1,3 @@
 FROM httpd
-RUN date > /usr/local/apache2/htdocs/index.html
+COPY app/index.html /usr/local/apache2/htdocs/
+RUN date >> /usr/local/apache2/htdocs/index.html

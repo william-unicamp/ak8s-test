@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+  name: meu-app
+  namespace: ak8s-test
+spec:
+  rules:
+  - host: meu-app.ak8s.ic.unicamp.br
+    http:
+      paths:
+      - backend:
+          service:
+            name: meu-app
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - meu-app.ak8s.ic.unicamp.br
+    secretName: meu-app-service-tls
+status:
+  loadBalancer: {}

@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: meu-app
+  namespace: ak8s-test
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: meu-app
+
+  template:
+    metadata:
+      labels:
+        app: meu-app
+
+    spec:
+      containers:
+        - name: meu-app
+          image: ghcr.io/william-unicamp/ak8s-test:latest
+          imagePullPolicy: Always
+
+          ports:
+            - containerPort: 80
